@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,124 +9,51 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Take-Two Interactive Software
 providerId: take-two-interactive
-publisherName: Take-Two Interactive Software
-serviceCategory: API
+publisherName: Take-Two Interactive Software, Inc.
+serviceCategory: Interactive Entertainment
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Gaming
-  - Entertainment
-  - Software
+  - Interactive Entertainment
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Take-Two Interactive Software API surface. Provides a
-  FOCUS-aligned mapping for cost allocation, usage measurement, and unit-economics reporting across the
-  provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: FinOps placeholder for Take-Two Interactive. No corporate-level API billing surface
+  is published; consumer-side cost mapping is governed by individual studio partner agreements.
+sources:
+  - https://www.take2games.com/
+notes: No public billing telemetry at corporate level. Meter list collapsed to custom engagement
+  pending direct studio or partner confirmation.
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Custom / Contact Sales
+  billingFrequency: Per-Invoice
   billingCurrency: USD
   chargeCategories:
     - Usage
-    - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
-  ServiceName: Take-Two Interactive Software
-  ServiceCategory: Developer Tools / API
-  ProviderName: Take-Two Interactive Software
-  PublisherName: Take-Two Interactive Software
-  InvoiceIssuerName: Take-Two Interactive Software
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceName: Take-Two Interactive
+  ServiceCategory: Interactive Entertainment
+  ProviderName: Take-Two Interactive
+  PublisherName: Take-Two Interactive Software, Inc.
+  InvoiceIssuerName: Take-Two Interactive Software, Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: custom_engagement
+    unit: varies
     aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Take-Two Interactive Software API
-    baseURL: https://api.take2games.com
-    tags:
-      - Gaming
-      - Entertainment
-      - Software
-    serviceName: Take-Two Interactive Software API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+principles:
+  - name: Visibility
+    description: Cost and consumption visibility is provided through individual studio partner
+      portals (Rockstar, 2K, Zynga) rather than a unified Take-Two surface.
+  - name: Allocation
+    description: Allocation is performed against studio-level invoices and partner statements in
+      the consumer's own finance system.
+  - name: Optimization
+    description: Optimization is handled through commercial review with the relevant studio business
+      development team.
+  - name: Accountability
+    description: Accountability sits with the partner team that owns the studio relationship.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
