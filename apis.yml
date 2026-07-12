@@ -29,12 +29,16 @@ apis:
     description: >-
       The Take-Two Interactive Software API provides access to platform services and data for enterprise integration and automation.
 common:
+  - type: DomainSecurity
+    url: security/take-two-interactive-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/TakeTwoInteractive
   - type: LinkedIn
     url: https://www.linkedin.com/company/take-2-interactive-software-inc-
   - type: Website
     url: https://www.take2games.com
+  - url: https://ir.take2games.com/rss/news-releases.xml
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
