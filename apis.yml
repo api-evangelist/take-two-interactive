@@ -28,42 +28,92 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/take-two-interactive.png
 tags:
   - Gaming
+  - Video Games
+  - Interactive Entertainment
   - Entertainment
+  - Publishing
   - Software
   - Fortune 1000
 description: >-
-  Take-Two Interactive Software is a major US corporation and Fortune 1000 company. The Take-Two Interactive Software API provides programmatic access to its platform services, data, and integrations for enterprise customers and partners.
+  Take-Two Interactive Software, Inc. (NASDAQ: TTWO) is a US interactive-entertainment holding
+  company headquartered in New York City that develops and publishes video games through its
+  labels Rockstar Games, 2K, Zynga and Ghost Story Games. It is a Fortune 1000 corporation.
+  Take-Two operates real API infrastructure — api.take2games.com and the T2GP (Take-Two Game
+  Platform) API at api.t2gp.take2games.com, the backend behind its launcher and account system —
+  but it runs no public developer program: no developer portal, no published reference, no
+  machine-readable contract, no SDKs, and no plans or rate limits. Its developer-surface hosts
+  (docs.take2games.com, dev.take2games.com) redirect every request to a FusionAuth SSO login.
 created: '2026-04-19'
-modified: '2026-04-19'
+modified: '2026-09-06'
 specificationVersion: '0.23'
 apis:
   - aid: take-two-interactive:take-two-interactive-api
     name: Take-Two Interactive Software API
     tags:
       - Gaming
-      - Entertainment
-      - Software
+      - Video Games
+      - Interactive Entertainment
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.take2games.com
-    humanURL: https://developer.take2games.com
-    properties:
-      - url: https://developer.take2games.com/docs
-        type: Documentation
+    humanURL: https://www.take2games.com
     description: >-
-      The Take-Two Interactive Software API provides access to platform services and data for enterprise integration and automation.
+      An undocumented Take-Two API host. api.take2games.com resolves to a Google Cloud load
+      balancer that returns a bare 403 Forbidden on every path probed, including the root. The
+      sibling T2GP platform host api.t2gp.take2games.com (CNAME api.t2gp.io) is demonstrably
+      live — /health returns 200 "OK" — but answers 404 on every other path. No OpenAPI,
+      Swagger, GraphQL SDL, AsyncAPI, WSDL or Protobuf contract is published for either host,
+      and no /.well-known/ discovery document is served on any Take-Two host (56 probes across
+      7 hosts, zero documents). humanURL points at the corporate site because the host formerly
+      recorded here, developer.take2games.com, does not resolve.
+    properties: []
 common:
-  - type: DomainSecurity
-    url: security/take-two-interactive-domain-security.yml
-  - type: GitHubOrganization
-    url: https://github.com/TakeTwoInteractive
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/take-2-interactive-software-inc-
   - type: Website
     url: https://www.take2games.com
-  - url: https://ir.take2games.com/rss/news-releases.xml
-    type: Blog
+  - type: Support
+    url: https://www.take2games.com/support
+  - type: TermsOfService
+    url: https://www.take2games.com/legal
+  - type: PrivacyPolicy
+    url: https://www.take2games.com/privacy
+  - type: GitHubOrganization
+    url: https://github.com/take-two-archive
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/take-2-interactive-software-inc-
+  - type: Blog
+    url: https://ir.take2games.com/rss/news-releases.xml
+  - type: DomainSecurity
+    url: security/take-two-interactive-domain-security.yml
+  - type: Lifecycle
+    url: lifecycle/take-two-interactive-lifecycle.yml
+  - type: LLMsTxt
+    url: llms/take-two-interactive-llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 x-parent: take-two
 x-relationship: product
+x-enrichment:
+  date: '2026-09-06'
+  status: minimal
+  artifacts_added: 3
+  pass: local-v3
+x-coverage:
+  state: gated
+  reason: partner-login
+  detail: >-
+    Take-Two's developer hosts docs.take2games.com and dev.take2games.com answer every path,
+    including every /.well-known/ path, with a 302 to a Vouch Proxy + FusionAuth SSO login at
+    fusionauth-vouch-proxy.t2gp.take2games.com, while the host previously on record,
+    developer.take2games.com, no longer resolves at all.
+  evidence:
+    - url: https://docs.take2games.com/.well-known/api-catalog
+      status: 302
+    - url: https://dev.take2games.com/
+      status: 302
+    - url: https://developer.take2games.com/docs
+      status: 0
+    - url: https://api.take2games.com/openapi.json
+      status: 403
+    - url: https://api.t2gp.take2games.com/health
+      status: 200
+  checked: '2026-09-06'

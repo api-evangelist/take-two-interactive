@@ -1,0 +1,173 @@
+generated: '2026-09-06'
+method: probed
+source: >-
+  Live unauthenticated GET of the named /.well-known/ paths on every host this record knows
+  (registrable domain + www, the apis.yml baseURL host, the two developer-surface hosts that
+  resolve under take2games.com, and the T2GP platform API + content hosts).
+provider: Take-Two Interactive Software
+providerId: take-two-interactive
+description: >-
+  Take-Two Interactive publishes NO /.well-known/ discovery document on any host we can reach.
+  56 probes across 7 hosts x 8 named paths returned zero 200s carrying a real document. Because
+  every path missed, this file records an ABSENCE and NO WellKnown or SecurityTxt pointer is
+  wired into apis.yml.
+notes: >-
+  Two shapes of wall dominate. docs.take2games.com and dev.take2games.com answer every path with
+  a 302 to https://fusionauth-vouch-proxy.t2gp.take2games.com/login — a Vouch Proxy in front of a
+  FusionAuth identity provider, i.e. the developer surface is behind partner/employee SSO.
+  api.take2games.com answers every path with a bare Google Cloud load-balancer 403. A 200 was
+  never returned by any host, so there is no soft-200/SPA-shell false positive to adjudicate here.
+  www.take2games.com returns 301 on /.well-known/api-catalog, but the Location is
+  https://www.take2games.com/api/error and that URL is itself a 404 — a framework catch-all, not
+  a catalog.
+hosts:
+  - host: www.take2games.com
+    note: Corporate site (Next.js). 404 body is the site's 144KB SPA error shell.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 301
+        note: >-
+          301 to https://www.take2games.com/api/error, which itself returns 404. Not a catalog;
+          no pointer emitted.
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: take2games.com
+    note: Apex. Plain-text 404 from the edge before the redirect to www.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: api.take2games.com
+    note: >-
+      apis.yml baseURL host. Resolves to a Google Cloud load balancer (34.120.176.175) that
+      returns a 134-byte "403 Forbidden" for every path, root included.
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/oauth-protected-resource
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /.well-known/agent.json
+        status: 403
+  - host: docs.take2games.com
+    note: >-
+      Resolves (CloudFront d1823b2ddf0bg8). Every path 302s to
+      https://fusionauth-vouch-proxy.t2gp.take2games.com/login — Vouch Proxy + FusionAuth SSO.
+    documents:
+      - path: /.well-known/security.txt
+        status: 302
+      - path: /.well-known/openid-configuration
+        status: 302
+      - path: /.well-known/oauth-authorization-server
+        status: 302
+      - path: /.well-known/oauth-protected-resource
+        status: 302
+      - path: /.well-known/api-catalog
+        status: 302
+      - path: /.well-known/ai-plugin.json
+        status: 302
+      - path: /.well-known/agent-card.json
+        status: 302
+      - path: /.well-known/agent.json
+        status: 302
+  - host: dev.take2games.com
+    note: Same CloudFront distribution and same FusionAuth SSO 302 as docs.take2games.com.
+    documents:
+      - path: /.well-known/security.txt
+        status: 302
+      - path: /.well-known/openid-configuration
+        status: 302
+      - path: /.well-known/oauth-authorization-server
+        status: 302
+      - path: /.well-known/oauth-protected-resource
+        status: 302
+      - path: /.well-known/api-catalog
+        status: 302
+      - path: /.well-known/ai-plugin.json
+        status: 302
+      - path: /.well-known/agent-card.json
+        status: 302
+      - path: /.well-known/agent.json
+        status: 302
+  - host: api.t2gp.take2games.com
+    note: >-
+      T2GP (Take-Two Game Platform) API host; CNAME to api.t2gp.io. Live — /health returns
+      200 "OK" — but every documented and discovery path is a plain-text 404.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: content.t2gp.take2games.com
+    note: T2GP content-delivery host (Cloudflare). Express-style 404 on every path.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+summary:
+  hosts_probed: 7
+  paths_probed: 56
+  documents_served: 0
+  pointer_emitted: false
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

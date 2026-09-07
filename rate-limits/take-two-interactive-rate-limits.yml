@@ -4,34 +4,51 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Take-Two Interactive Software
 providerId: take-two-interactive
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
+modified: '2026-09-06'
+generated: '2026-09-06'
+method: searched
+source: >-
+  Search of every reachable Take-Two surface for published rate limits, plus live inspection of
+  the response headers returned by the two live Take-Two API hosts. Supersedes the 2026-05-04
+  bulk sweep entry (roadmap#35).
 reconciled: false
 tags:
   - Gaming
   - Interactive Entertainment
   - Rate Limiting
-description: Take-Two Interactive does not publish public rate-limit documentation at the corporate
-  level. Any rate-limit policies are scoped to individual studio platforms (Rockstar, 2K, Zynga)
-  and their respective partner agreements.
-sources:
-  - https://www.take2games.com/
-notes: No public rate-limit documentation at corporate level. Studio platforms govern their own
-  policies under separate partner agreements.
+description: >-
+  Take-Two Interactive publishes no rate limits, and its live API hosts emit no rate-limit
+  response headers on an unauthenticated request. An agent calling these hosts has no runtime
+  signal — no RateLimit-*, no X-RateLimit-*, no Retry-After — and no documented number either.
+notes: >-
+  The previous version asserted a "see studio partner agreement" limit scoped to an account. No
+  such agreement text is public, so that entry has been removed rather than left as an unsourced
+  claim. Nothing observed is a rate limit: api.take2games.com returns a blanket 403 from a Google
+  Cloud load balancer for every path (an authorization refusal, not throttling), and
+  api.t2gp.take2games.com returns 404 on every path except /health, which returns 200 "OK" with
+  no rate-limit headers.
+limit_count: 0
+limits: []
+headers:
+  published: []
+  observed: []
+  note: >-
+    No RateLimit-*, X-RateLimit-*, or Retry-After header was returned by any probed Take-Two host.
 responseCodes:
-  throttled: 429
-limits:
-  - name: Studio / partner contract limits
-    scope: account
-    metric: varies
-    limit: see studio partner agreement
-policies:
-  - name: Studio-Level Governance
-    description: Rate-limit and throttling behavior is owned by individual studio platforms and
-      defined under their respective partnership or SDK agreements rather than at the Take-Two
-      corporate layer.
+  throttled: null
+  note: No documented status code on exhaustion; 429 was never observed.
+sources:
+  - url: https://api.t2gp.take2games.com/health
+    status: 200
+    note: Live T2GP platform health endpoint; response carries no rate-limit headers
+  - url: https://api.take2games.com/
+    status: 403
+    note: Blanket load-balancer 403 on every path; not a throttle response
+  - url: https://www.take2games.com/developers
+    status: 404
+  - url: https://developer.take2games.com/
+    status: 0
+    note: NXDOMAIN
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

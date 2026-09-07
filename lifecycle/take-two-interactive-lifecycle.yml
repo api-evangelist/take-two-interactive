@@ -1,0 +1,63 @@
+specification: API Commons Lifecycle
+specificationVersion: '0.1'
+provider: Take-Two Interactive Software
+providerId: take-two-interactive
+generated: '2026-09-06'
+method: probed
+source: >-
+  Live probes of status.take2games.com, www.take2games.com and the T2GP hosts, plus a search of
+  the corporate site and the two Take-Two GitHub accounts for a versioning or deprecation policy.
+description: >-
+  Take-Two Interactive publishes no API lifecycle policy of any kind — no versioning scheme, no
+  deprecation or sunset policy, no SLA, and no reachable status page. This artifact records those
+  absences as measurements, each with the URL and HTTP status behind it. No StatusPage and no
+  Deprecation pointer is wired into apis.yml, because neither surface exists.
+versioning:
+  policy_published: false
+  scheme: null
+  evidence: >-
+    No developer portal exists to carry one. developer.take2games.com does not resolve (NXDOMAIN);
+    docs.take2games.com and dev.take2games.com 302 to a FusionAuth SSO login.
+deprecation:
+  policy_published: false
+  sunset_header: unknown
+  deprecation_header: unknown
+  rfc8594: false
+  evidence: No deprecation, sunset or end-of-life policy found on any reachable Take-Two surface.
+sla:
+  published: false
+  evidence: >-
+    No public SLA. take2games.com/legal (200) is a consumer EULA/terms document and carries no
+    API service-level commitment.
+status_page:
+  present: false
+  url: https://status.take2games.com/
+  http_status: 0
+  finding: >-
+    DANGLING CNAME — a decommissioned status page, not a live one. status.take2games.com CNAMEs to
+    mgmqvhlymq34.stspg-customer.com (Atlassian Statuspage), but the TLS certificate presented is
+    CN=*.statuspage.io with SANs *.statuspage.io and statuspage.io only, so the custom hostname
+    fails certificate validation (curl exit 60). Ignoring validation, every path — including the
+    Statuspage public API paths /api/v2/status.json, /api/v2/summary.json, /api/v2/components.json
+    and /api/v2/incidents.json — redirects to https://www.atlassian.com/software/statuspage, the
+    vendor's own marketing page. The Statuspage subscription behind this hostname is gone; the DNS
+    record was left pointing at it.
+    Consequence for consumers: nothing here reports Take-Two availability, and no StatusPage
+    pointer is emitted for this provider.
+  probes:
+    - url: https://status.take2games.com/
+      status: 0
+      note: TLS SNI/certificate mismatch — no alternative certificate subject name matches the host
+    - url: https://status.take2games.com/api/v2/summary.json
+      status: 200
+      note: >-
+        Only with certificate validation disabled, and the 200 is
+        https://www.atlassian.com/software/statuspage after redirect — Atlassian marketing HTML,
+        not a Statuspage summary document
+deprecated_operations: []
+notes: >-
+  Label-level surfaces (Rockstar Games, 2K, Zynga, Ghost Story) run their own support and status
+  properties under their own domains and are profiled under their own records, not this one.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

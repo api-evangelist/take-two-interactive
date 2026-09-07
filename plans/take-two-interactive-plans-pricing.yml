@@ -4,45 +4,48 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Take-Two Interactive Software
 providerId: take-two-interactive
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
+modified: '2026-09-06'
+generated: '2026-09-06'
+method: searched
+source: >-
+  Direct probes of the Take-Two corporate site for a pricing, developer, partner or API page,
+  plus probes of every host that could carry a developer portal. Supersedes the 2026-05-04 bulk
+  sweep entry (roadmap#35), which asserted a "Contact Sales" plan Take-Two does not publish.
 reconciled: false
 tags:
   - Gaming
   - Interactive Entertainment
   - Publishing
-description: Take-Two Interactive (parent of Rockstar Games, 2K, and Zynga) does not publish a
-  public developer API pricing page at the corporate level. Game-platform integrations are handled
-  through individual studio partnerships rather than a unified Take-Two developer plan.
+description: >-
+  Take-Two Interactive publishes NO API plans and NO API pricing — not a self-serve tier, and not
+  a contact-sales tier either. This is an honest zero, not an enterprise gate: there is no page
+  on any reachable Take-Two host that offers API access for sale under any commercial shape.
+notes: >-
+  The previous version of this file recorded a single "Contact Sales" plan. That plan was written
+  by the 2026-05-04 bulk sweep and is not published by Take-Two anywhere; it has been removed
+  rather than left standing as a claim we make on the company's behalf. Take-Two is a game
+  publisher and holding company, and its labels (Rockstar Games, 2K, Zynga, Ghost Story Games)
+  are profiled under their own records.
+plan_count: 0
+plans: []
 sources:
-  - https://www.take2games.com/
-notes: No public API pricing surface at the corporate Take-Two level. Studio-level platforms (Rockstar,
-  2K, Zynga) publish their own SDKs and partner programs separately. Plans collapsed to a single
-  Contact Sales entry.
-plans:
-  - id: take-two-interactive-contact-sales
-    name: Contact Sales
-    type: enterprise
-    description: Custom-negotiated business development and partnership engagement with Take-Two
-      Interactive or its studios. No self-serve developer plan tier is published at the corporate
-      level.
-    entries:
-      - label: Custom Engagement
-        name: custom_engagement
-        type: flat
-        metric: varies
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: contact sales
-        userMultiplied: false
-    elements:
-      - name: Studio Partnership
-      - name: Custom Scoping
-      - name: Business Development
+  - url: https://www.take2games.com/pricing
+    status: 404
+  - url: https://www.take2games.com/developers
+    status: 404
+  - url: https://www.take2games.com/developer
+    status: 404
+  - url: https://www.take2games.com/partners
+    status: 404
+  - url: https://www.take2games.com/api
+    status: 404
+    note: 302s to https://www.take2games.com/api/error, itself a 404
+  - url: https://developer.take2games.com/
+    status: 0
+    note: NXDOMAIN — the host on record for the developer portal does not resolve
+  - url: https://docs.take2games.com/
+    status: 302
+    note: Redirects to a FusionAuth SSO login; no pricing surface reachable
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
