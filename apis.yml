@@ -67,6 +67,10 @@ apis:
       recorded here, developer.take2games.com, does not resolve.
     properties: []
 common:
+  - type: InvestorRelations
+    url: https://ir.take2games.com/
+  - type: Careers
+    url: https://www.take2games.com/careers
   - type: Website
     url: https://www.take2games.com
   - type: Support
@@ -90,8 +94,6 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-x-parent: take-two
-x-relationship: product
 x-enrichment:
   date: '2026-09-06'
   status: minimal
