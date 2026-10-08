@@ -67,6 +67,12 @@ apis:
       recorded here, developer.take2games.com, does not resolve.
     properties: []
 common:
+  - type: Plans
+    url: plans/take-two-interactive-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/take-two-interactive-rate-limits.yml
+  - type: FinOps
+    url: finops/take-two-interactive-finops.yml
   - type: InvestorRelations
     url: https://ir.take2games.com/
   - type: Careers
