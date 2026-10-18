@@ -29,6 +29,13 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/take-two-i
 tags:
   - Gaming
   - Video Games
+  - Entertainment
+  - Publishing
+  - Software
+  - Fortune 1000
+tags_raw:
+  - Gaming
+  - Video Games
   - Interactive Entertainment
   - Entertainment
   - Publishing
@@ -50,6 +57,9 @@ apis:
   - aid: take-two-interactive:take-two-interactive-api
     name: Take-Two Interactive Software API
     tags:
+      - Gaming
+      - Video Games
+    tags_raw:
       - Gaming
       - Video Games
       - Interactive Entertainment
