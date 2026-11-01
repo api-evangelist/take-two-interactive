@@ -1,4 +1,4 @@
-# Take-Two Interactive Software (take-two-interactive)
+# Take-Two Interactive Software
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,23 +64,106 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Take-Two Interactive Software is a major US corporation and Fortune 1000 company. The Take-Two Interactive Software API provides programmatic access to its platform services, data, and integrations for enterprise customers and partners.
+Take-Two Interactive Software, Inc. (NASDAQ: TTWO) is a US interactive-entertainment holding company headquartered in New York City that develops and publishes video games through its labels Rockstar Games, 2K, Zynga and Ghost Story Games. It is a Fortune 1000 corporation. Take-Two operates real API infrastructure — api.take2games.com and the T2GP (Take-Two Game Platform) API at api.t2gp.take2games.com, the backend behind its launcher and account system — but it runs no public developer program: no developer portal, no published reference, no machine-readable contract, no SDKs, and no plans or rate limits. Its developer-surface hosts (docs.take2games.com, dev.take2games.com) redirect every request to a FusionAuth SSO login.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/take-two-interactive/refs/heads/main/apis.yml)
+**Areas:** Gaming · Video Games · Entertainment · Publishing · Software · Fortune 1000
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Take-Two Interactive Software on APIs.io
 
-## Tags:
+Everything profiled for Take-Two Interactive Software is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/take-two-interactive/](https://apis.io/providers/take-two-interactive/)** — or go straight to one of the APIs or properties below.
 
- - Gaming, Entertainment, Software
+### APIs (1)
 
-## Timestamps
+- [Take-Two Interactive Software API](https://apis.io/apis/take-two-interactive/take-two-interactive-api/) — An undocumented Take-Two API host. api.take2games.com resolves to a Google Cloud load balancer that returns a bare 403 Forbidden on every path probed,…
 
-- **Created:** 2026-04-19
-- **Modified:** 2026-04-19
+### Published properties
 
-## Maintainers
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-**FN:** Kin Lane
+#### Security (1)
 
-**Email:** kin@apievangelist.com
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Take Two Interactive Domain Security](https://apis.io/security/take-two-interactive/take-two-interactive-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Take Two Interactive Plans Pricing](https://apis.io/plans/take-two-interactive/take-two-interactive-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Take Two Interactive Rate Limits](https://apis.io/rate-limits/take-two-interactive/take-two-interactive-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Take Two Interactive Finops](https://apis.io/finops/take-two-interactive/take-two-interactive-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.take2games.com)
+- [Support](https://www.take2games.com/support)
+- [Blog](https://ir.take2games.com/rss/news-releases.xml)
+- [Terms of service](https://www.take2games.com/legal)
+- [Privacy policy](https://www.take2games.com/privacy)
+- [GitHub](https://github.com/take-two-archive)
+
+## API Evangelist rating
+
+**Kin Score 12.4** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 7.1 |
+| Access clarity | 21.1 |
+
+**Agent readiness 2.5** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 13.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/take-two-interactive/](https://apis.io/providers/take-two-interactive/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Take-Two Interactive Software: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/take-two-interactive/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
